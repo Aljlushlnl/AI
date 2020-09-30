@@ -1,11 +1,6 @@
 #include <stdio.h>
 enum  direction{start,up,down,left,right};
 
-int matrix[3][3];
-int print_matrix(int);
-int all_in_place();
-int  iterative_deepening(int k,int d,int i,int j,enum direction dir);
-
 int main()
 {
     const int MAX_DEPTH=50;  //深度边界
@@ -23,6 +18,11 @@ int main()
     return 0;
 }
 
+
+int matrix[3][3];
+int print_matrix(int);
+int all_in_place();
+int  iterative_deepening(int k,int d,int i,int j,enum direction dir);
 
 int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
 {
