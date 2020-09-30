@@ -8,27 +8,22 @@ int  iterative_deepening(int k,int d,int i,int j,enum direction dir);
 
 int main()
 {
-    const int MAX_DEPTH=50;  //Éî¶È±ß½ç
+    const int MAX_DEPTH=50;  //æ·±åº¦è¾¹ç•Œ
     int i,j,d;
-    for(i=0;i<9;i++)    //ÊäÈë0~9£¬0±íÊ¾¿Õ¸ñ
+    for(i=0;i<9;i++)    //è¾“å…¥0~9ï¼Œ0è¡¨ç¤ºç©ºæ ¼
         scanf("%d",matrix[0]+i);
 
-    for(i=0; i<9&&matrix[0][i]; i++)    //Ñ°ÕÒ¿Õ¸ñÎ»ÖÃ
+    for(i=0; i<9&&matrix[0][i]; i++)    //å¯»æ‰¾ç©ºæ ¼ä½ç½®
         ;
     j = i%3;
     i /= 3;
-    //µü´ú¼ÓÉîµÄDFSÃ¤Ä¿ËÑË÷Ëã·¨£¬Éî¶È±ß½ç´Ó1µ½MAX_DEPTH
+    //è¿­ä»£åŠ æ·±çš„DFSç›²ç›®æœç´¢ç®—æ³•ï¼Œæ·±åº¦è¾¹ç•Œä»1åˆ°MAX_DEPTH
     for(d=1;d<MAX_DEPTH && iterative_deepening(1,d,i, j,start);d++)
         ;
     return 0;
 }
 
-/*
-*  k    : µ±Ç°Éî¶È
-*  d    : Éî¶È±ß½ç
-*  i,j   : ¿Õ¸ñÎ»ÖÃ
-*  dir  : ÉÏÒ»²½ÒÆ¶¯·½Ïò
-*/
+
 int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
 {
     int ret=1;
@@ -36,11 +31,11 @@ int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
     if(k>d)
         return ret;
 
-    if(all_in_place())    //    µ½´ïÄ¿±ê×´Ì¬
+    if(all_in_place())    //    åˆ°è¾¾ç›®æ ‡çŠ¶æ€
         return print_matrix(k);
     else
     {
-        if(dir!=up&&i<2 )    //¿ÉÒÔÏòÏÂ
+        if(dir!=up&&i<2 )    //å¯ä»¥å‘ä¸‹
         {
             matrix[i][j] =     matrix[i+1][j];
             matrix[i+1][j] = 0;
@@ -51,7 +46,7 @@ int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
                 return print_matrix(k);
         }
 
-        if(dir!=down&&i>0 )    //¿ÉÒÔÏòÉÏ
+        if(dir!=down&&i>0 )    //å¯ä»¥å‘ä¸Š
         {
             matrix[i][j] =     matrix[i-1][j];
             matrix[i-1][j] = 0;
@@ -62,7 +57,7 @@ int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
                 return print_matrix(k);
         }
 
-        if(dir!=left&&j<2 )    //¿ÉÒÔÏòÓÒ
+        if(dir!=left&&j<2 )    //å¯ä»¥å‘å³
         {
             matrix[i][j] =     matrix[i][j+1];
             matrix[i][j+1] = 0;
@@ -73,7 +68,7 @@ int  iterative_deepening(int k,int d,int i,int j,enum direction dir)
                 return print_matrix(k);
         }
 
-        if(dir!=right&&j>0 )    //¿ÉÒÔÏò×ó
+        if(dir!=right&&j>0 )    //å¯ä»¥å‘å·¦
         {
             matrix[i][j] =     matrix[i][j-1];
             matrix[i][j-1] = 0;
